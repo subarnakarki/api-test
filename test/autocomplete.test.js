@@ -9,7 +9,6 @@ let data;
 beforeAll( async () => {
   response = await got(`${endpoint}/autocomplete?query=dog`);
   data = JSON.parse(response.body);
-  console.log(data)
 });
 
 test('/breweries/search with query=dog should return 49 results', async () => {
