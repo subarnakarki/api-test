@@ -15,7 +15,7 @@ switch to node 12 using nvm
 
 `nvm use 12`
 
-install dependencies node 12 using nvm
+install dependencies
 
 `npm install`
 
