@@ -79,12 +79,28 @@ test('/breweries with ?page=15&per_page=200 should return 50 results', async() =
   expect(data.length).toBeLessThanOrEqual(50);
 });
 
-test('/breweries with ?page=1&sort=id should return results in ascending order by Id', async() => {
+test('/breweries with sort=id should return results in ascending order by Id', async() => {
   const response = await got(`${endpoint}?sort=id`);
   const data = JSON.parse(response.body);
 
   data.forEach((result, i) => {
     let expectedId = i+ 1;
     expect(result.id).toBe(expectedId);
+  });
+});
+
+test('/breweries with sort=id should return results in descending order by Id', async() => {
+  const response = await got(`${endpoint}?sort=-id`);
+  const data = JSON.parse(response.body);
+  const lastId = 8033
+  let previousID;
+
+  data.forEach((result) => {
+    if (!previousID) {
+      expect(result.id).toBe(lastId);
+    } else {
+      expect(result.id).toBeLessThan(previousID);
+    }
+    previousID = result.id;
   });
 });
