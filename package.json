@@ -4,8 +4,12 @@
   "description": "api tests for open brewery DB",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Subarna Karki",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "got": "^11.8.0",
+    "jest": "^26.6.1"
+  }
 }
