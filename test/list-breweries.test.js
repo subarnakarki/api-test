@@ -20,6 +20,6 @@ test('searching /breweries by_name=dog should only return results with a name co
   const response = await got(`${endpoint}?by_name=dog`);
   const data = JSON.parse(response.body);
   data.forEach(result => {
-    expect(result.name.toLowerCase()).toContain("dog");
+    expect(result.name.toLowerCase()).toMatch(/dog/i);
   });
 });
